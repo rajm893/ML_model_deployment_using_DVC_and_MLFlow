@@ -16,3 +16,19 @@ stages:
     outs:
     - data/processed/train_WineQT.csv
     - data/processed/test_WineQT.csv
+  
+  train_and_evaluate:
+    cmd: python3 src/train_and_evaluate.py --config=params.yaml
+    deps:
+    - src/train_and_evaluate.py
+    - data/processed/train_WineQT.csv
+    - data/processed/test_WineQT.csv
+    params:
+    - estimators.ElasticNet.params.alpha
+    - estimators.ElasticNet.params.l1_ratio
+    metrics:
+    - report/scores.json:
+        cache: false
+    - report/params.json:
+        cache: false
+
