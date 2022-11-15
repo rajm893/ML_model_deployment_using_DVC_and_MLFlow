@@ -15,11 +15,11 @@ def predict_api():
     response = prediction.predict(request.json)
     return jsonify(response)
 
-@app.route('/predict',methods=['POST'])
+@app.route('/predict' ,methods=['POST'])
 def predict():
     data=[float(x) for x in request.form.values()]
     response = prediction.predict_form(data)
-    return render_template("home.html",prediction_text="The House price prediction is {}".format(jsonify(response)))
+    return render_template("home.html",prediction_text="The House price prediction is {}".format(response))
 
 
 if __name__ == "__main__":
