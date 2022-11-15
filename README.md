@@ -1,4 +1,4 @@
-## ML Model deployment using MLFLow on Taxi Fare prediction dataset
+## ML Model deployment using MLFLow and DVC
 
 
 
@@ -15,3 +15,5 @@ mlflow server \
         --backend-store-uri sqlite:///mlflow.db \
         --default-artifact-root ./artifacts \
         --host 0.0.0.0 -p 5555
+
+pip install "dvc[gs]"
