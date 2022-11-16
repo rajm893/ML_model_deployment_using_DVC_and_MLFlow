@@ -6,7 +6,6 @@ from pprint import pprint
 import joblib
 import os
 
-print(os.getcwd())
 
 def log_production_model(config_path):
     config = read_params(config_path)

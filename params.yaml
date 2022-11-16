@@ -22,10 +22,6 @@ estimators:
 
 model_dir: saved_models
 
-report:
-  params: report/params.json
-  scores: report/scores.json
-
 webapp_model_dir: prediction_service/model/model.joblib
 
 mlflow_config:
@@ -33,6 +29,6 @@ mlflow_config:
   experiment_name: ElasticNet regression
   run_name: mlops
   registered_model_name: ElasticNetTaxiModel
-  remote_server_uri: http://0.0.0.0:5555
+  remote_server_uri: http://0.0.0.0:2222
 
 
