@@ -17,7 +17,7 @@ def predict_api():
 @app.route('/predict' ,methods=['POST'])
 def predict():
     response = prediction.predict_form(request.form)
-    return render_template("home.html",prediction_text="The House price \
+    return render_template("home.html",prediction_text="The wine quality \
                              prediction is {}".format(round(response,2)))
 
 
