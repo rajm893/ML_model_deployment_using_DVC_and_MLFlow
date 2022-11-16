@@ -11,7 +11,6 @@ def index():
 
 @app.route("/predict_api", methods=["POST"])
 def predict_api():
-    print(request.json)
     response = prediction.predict(request.json)
     return jsonify(response)
 
@@ -19,7 +18,8 @@ def predict_api():
 def predict():
     data=[float(x) for x in request.form.values()]
     response = prediction.predict_form(data)
-    return render_template("home.html",prediction_text="The House price prediction is {}".format(response))
+    return render_template("home.html",prediction_text="The House price \
+                             prediction is {}".format(response))
 
 
 if __name__ == "__main__":

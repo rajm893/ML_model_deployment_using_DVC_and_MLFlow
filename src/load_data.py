@@ -1,5 +1,4 @@
 # save it in the data/raw for further process
-import os
 from get_data import read_params, get_data
 import argparse
 

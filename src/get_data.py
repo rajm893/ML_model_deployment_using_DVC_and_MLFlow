@@ -2,7 +2,7 @@ import os
 import yaml
 import pandas as pd
 import argparse
-
+from google.cloud import storage
 
 def read_params(config_path):
     with open(config_path) as yml_file:
@@ -11,9 +11,14 @@ def read_params(config_path):
 
 def get_data(config_path):
     config = read_params(config_path)
-    data_path = config['data_source']['gcp_source']
-    df = pd.read_csv(data_path, sep=",", encoding='utf-8')
-    return df
+    gcp_source_path = config['data_source']['gcp_source']
+    local_write_path = config['data_source']['local_write']
+    project_name = config['gcp_details']["project_name"] 
+    bucket_name = config['gcp_details']['bucket_name'] 
+    storage_client = storage.Client(project_name)
+    bucket = storage_client.get_bucket(bucket_name)
+    blob = bucket.blob(gcp_source_path)
+    blob.download_to_filename(local_write_path)
 
 
 if __name__ == "__main__":

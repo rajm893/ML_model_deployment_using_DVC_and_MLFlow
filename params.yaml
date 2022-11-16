@@ -3,8 +3,13 @@ base:
   random_state: 34
   target_col: TARGET
 
+gcp_details:
+  project_name: Raj-favorite
+  bucket_name: mlops-data-files
+
 data_source:
-  gcp_source: data_source/WineQT.csv
+  gcp_source: WineQ/WineQ_raw/WineQT.csv
+  local_write: data_source/WineQT.csv 
 
 load_data:
   raw_dataset_csv: data/raw/WineQT.csv
