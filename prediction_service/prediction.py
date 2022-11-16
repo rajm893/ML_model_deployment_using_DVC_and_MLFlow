@@ -76,6 +76,7 @@ def predict_form(data):
         config = read_params(params_path)
         model_dir_path = config["webapp_model_dir"]
         model = joblib.load(model_dir_path)
+        data=[float(x) for x in data.values()]
         data = np.array(data).reshape(1,-1)
         data = model.predict(data).tolist()[0]
         return data
