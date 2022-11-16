@@ -33,4 +33,4 @@ mlflow server \
 
 Further Improvement: <br>
 
-* Due to lack of resources couldn't leverage many functionalities Google cloud. We can run MLflow on the GCP VM instance and deploy the model using Google App Engine. 
+* Due to lack of resources couldn't leverage many functionalities from Google cloud. We can run MLflow on the GCP VM instance and deploy the model using Google App Engine. This would reduce latency as the artifacts and data will be stored in Google cloud storage.
