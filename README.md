@@ -1,36 +1,47 @@
-# Automate ML Model deployment using DVC and MLFlow
+# Automated ML Deployment with DVC, MLFlow, and Cloud Integration
+
 
 ![ML Pipeline](/Misc/ML_pipeline.png "Workflow")
 
-* As the Continious Integration and Continious Deployment of Machine learning pipelines is important for Machine Learning Lifecycle, I  have demostrated the solution using [MLflow](https://mlflow.org/) and [DVC (Data Version Control)](https://dvc.org/).
+### 🎯 Project Aim
+Simplify and automate the deployment of Machine Learning models using state-of-the-art CI/CD tools and cloud platforms.
 
-* Here, the input data is tracked and maintained by DVC which uses git to track the .dvc files and Google cloud storage for storing data source. 
+### 🌟 Features
 
-* The model pipeline like load, split, train and evaluate are executed in stages using dvc.yaml file. All the required configuration required during the ML pipeline is used from config file (params.yaml).<br>
+- 🔄 Continuous Integration & Deployment (CI/CD): Embrace the power of CI/CD for ML with [MLflow](https://mlflow.org/) and [DVC (Data Version Control)](https://dvc.org/).
+- 📂 Data Management: Seamlessly track your input data with DVC, leveraging git for `.dvc` files and Google Cloud Storage for the actual data source.
+- 🤖 Pipeline Automation: Execute the ML pipeline stages such as load, split, train, and evaluate via the `dvc.yaml` file. All configurations are managed using the `params.yaml`.
+
 Run below command to run the pipeline:
-```
-dvc repro
-```
+  ```
+  dvc repro
+  ```
 Run ```pytest -v``` to run all the test cases.
-* Tracking of model stages like "logging of prediction model to production stage" is automated using MLflow. 
 
-To use MLFlow UI run below command:
-```
+**Ensure your pipeline's robustness with**:
+
+- 📊 Model Tracking: Effortlessly automate stages like "logging of prediction model to production" using MLflow.
+
+To access the MLFlow UI:
+
+``` 
 mlflow server \
         --backend-store-uri sqlite:///mlflow.db \
         --default-artifact-root ./artifacts \
         --host 0.0.0.0 -p 5555
 ```
 
-* Here, the Application is served in two ways:<br>
-    1. Prediction as a service using API
-    1. Prediction using web UI 
 
-* The prediction server is built using **Flask** and deployed the model on **Heroku** cloud.
+### Versatile Deployment:
 
+- 🚀 API Service: Offer predictions on-the-go via a dedicated API.
+- 🌐 Web UI: Enable users to make predictions through a web interface.
+- ☁️ Cloud-Ready: Developed the prediction server using Flask and hosted it on the Heroku cloud platform.
 
-* I have also used Github Actions for workflow using ci-cd.yaml (.github/workflows/ci-cd.yaml) for Continuous Integration and Continuous Deployment. The deployment is done once all the test cases are passed and the job is succeded.
+- 🚀 Github Actions: Automate workflows using the `ci-cd.yaml` (located at `.github/workflows/ci-cd.yaml`). Deployment is triggered upon successful test case execution.
 
-Further Improvement: <br>
+### 🔜 Future Directions
 
-* Due to lack of resources couldn't leverage many functionalities from Google cloud. We can run MLflow on the GCP VM instance and deploy the model using Google App Engine. This would reduce latency as the artifacts and data will be stored in Google cloud storage.
+- Enhance cloud integration. Due to resource constraints, several Google Cloud functionalities were not tapped into. For instance:
+  - Running MLflow on a GCP VM instance.
+  - Model deployment via the Google App Engine to reduce latency given that artifacts and data would reside in Google Cloud Storage.
